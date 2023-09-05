@@ -1,0 +1,61 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model DetailsMaterialViewModel
+
+<style>
+    .btn.btn-light {
+        border-color: lightgray;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="display :flex; flex-direction :row;justify-content :space-between;">
+                @Html.ActionLink("←", "Index", new {}, new { @class = "btn btn-light" })
+                <div>
+                    @Html.ActionLink("✏️", "Edit", new { id=@Model.MaterialId }, new { @class = "btn btn-primary rounded-2" })
+                    @Html.ActionLink("🗑️", "Delete", new { id=@Model.MaterialId }, new { @class = "btn btn-danger rounded-2" })
+                </div>
+            </div>
+            @if (Model.MaterialDictionary != null)
+            {
+                <h2 style="margin-top: 5%">@Model.MaterialDictionary.MaterialName - @Model.MaterialId</h2>
+            }
+            else
+            {
+                <h2 style="margin-top: 5%">Экземпляр - @Model.MaterialId</h2>
+            }
+            <hr />
+            <p><strong>Тип:</strong> @Html.DisplayFor(modelItem => Model.MaterialDictionary.MaterialType)</p>
+            @if (Model.Inventory?.Location == null)
+            {
+                <a href="@Url.Action("Details", "Order", new { id = Model.OrderId })" style="color: #191919; font-weight:600;">
+                    @Model.WhereIs
+                </a>
+            }
+            else
+            {
+                <p>
+                    <strong>Местонахождение:</strong> @(Model.Inventory?.Location?.City ?? "нет данных"),
+                    @(Model.Inventory.Location?.Street ?? "нет данных"), @(Model.Inventory.Location?.HouseNumber ?? "нет данных")
+                </p>
+            }
+        </div>
+    </div>
+</div>
+
+@section SideContent {
+    <p>История:</p>
+    <hr />
+    <ul style="list-style-type: none;">
+        @foreach (var ph in Model.Consumptions.OrderByDescending(h => h.CreatedAt))
+        {
+            <li>
+                @ph.CreatedAt.ToString("dd.MM.yyyy HH:mm") <br />
+                @Html.DisplayFor(m => ph.Assignment.AssignmentDictionary.AssignmentTitle): <br />
+                -@ph.Quantity
+                <hr />
+            </li>
+        }
+    </ul>
+ }

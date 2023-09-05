@@ -1,0 +1,417 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DesignBureauWebApplication
+build_property.RootNamespace = DesignBureauWebApplication
+build_property.ProjectDir = C:\Users\Пользователь\source\repos\DesignBureauWebApplication\DesignBureauWebApplication\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Пользователь\source\repos\DesignBureauWebApplication\DesignBureauWebApplication
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Assignment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Assignment/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Assignment/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Assignment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Consumption/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VtcHRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Department/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Department/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Department/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Department/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Department/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Employee/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Employee/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Employee/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Employee/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Equipment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Equipment/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Equipment/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Equipment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Execution/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlY3V0aW9uXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InteractionDictionary/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25EaWN0aW9uYXJ5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InteractionDictionary/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25EaWN0aW9uYXJ5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InteractionDictionary/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25EaWN0aW9uYXJ5XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InteractionDictionary/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25EaWN0aW9uYXJ5XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InteractionDictionary/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25EaWN0aW9uYXJ5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Interaction/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Interaction/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Interaction/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Interaction/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Interaction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50ZXJhY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryOrder/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5T3JkZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryOrder/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5T3JkZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryOrder/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5T3JkZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryOrder/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5T3JkZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryOrder/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5T3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryTransportation/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5VHJhbnNwb3J0YXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryTransportation/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5VHJhbnNwb3J0YXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryTransportation/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5VHJhbnNwb3J0YXRpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryTransportation/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5VHJhbnNwb3J0YXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/InventoryTransportation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5VHJhbnNwb3J0YXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Inventory/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Inventory/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Inventory/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Inventory/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Inventory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Location/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Location/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Location/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Location/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Location/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Material/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Material/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Material/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Material/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/OrderItem/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJJdGVtXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Order/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Order/CreateTransportationForOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ3JlYXRlVHJhbnNwb3J0YXRpb25Gb3JPcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Order/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Order/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Order/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Position/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Position/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Position/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Position/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Position/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Project/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Project/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Project/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Project/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Project/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Supplier/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Supplier/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Supplier/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Supplier/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Supplier/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Transportation/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0YXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Transportation/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0YXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Transportation/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0YXRpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Transportation/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0YXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Transportation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0YXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/WorkDictionary/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0RpY3Rpb25hcnlcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/WorkDictionary/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0RpY3Rpb25hcnlcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/WorkDictionary/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0RpY3Rpb25hcnlcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/WorkDictionary/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0RpY3Rpb25hcnlcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/WorkDictionary/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya0RpY3Rpb25hcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Work/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Work/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Work/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Work/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Work/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Пользователь/source/repos/DesignBureauWebApplication/DesignBureauWebApplication/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-yy5zbwhnnx

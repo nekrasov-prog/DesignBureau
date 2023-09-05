@@ -1,0 +1,98 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model DetailsOrderViewModel
+
+<style>
+    .btn.btn-light {
+        border-color: lightgray;
+    }
+
+    .work-row:hover {
+        cursor: pointer;
+        /*transform: scale(1.01);
+            transition: transform 0.5s;*/
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="display :flex; flex-direction :row;justify-content :space-between;">
+                @Html.ActionLink("←", "Index", new {}, new { @class = "btn btn-light" })
+                <div>
+                    @Html.ActionLink("✏️", "Edit", new { id=@Model.OrderId }, new { @class = "btn btn-primary rounded-2" })
+                    @Html.ActionLink("🗑️", "Delete", new { id=@Model.OrderId }, new { @class = "btn btn-danger rounded-2" })
+                </div>
+            </div>
+            <h2 style="margin-top: 5%">Заказ @Model.ContractNumber</h2>
+            <p text-muted>Поставщик: @Model.Supplier.SName</p>
+            <hr />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            @Html.ActionLink("✚", "Create", "OrderItem", new { orderId = Model.OrderId }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Доставка", "CreateTransportationForOrder", "Order", new { orderId = Model.OrderId }, new { @class = "btn btn-primary" })
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Инвентарь</th>
+                    <th>Тип</th>
+                    <th>Количество</th>
+                    <th>Стоимость</th>
+                    <th>Оценка</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderItems)
+                {
+                    <tr>
+                        @if (item.Inventory.MaterialId == null)
+                        {
+                            <td>
+                                @if (item.Inventory != null && item.Inventory.Equipment != null && item.Inventory.Equipment.EquipmentDictionary != null)
+                                {
+                                    @item.Inventory.Equipment.EquipmentDictionary.EquipmentName
+                                }, <br />
+                                @Html.DisplayFor(ed => item.Inventory.Equipment.EquipmentDictionary.EquipmentType)
+                            </td>
+                            <td>Оборудование</td>
+                            <td>1</td>
+                        }
+                        else
+                        {
+                            <td>
+                                @item.Inventory.Material.MaterialDictionary.MaterialName,<br />
+                                @Html.DisplayFor(md => item.Inventory.Material.MaterialDictionary.MaterialType)
+                            </td>
+                            <td>Материал</td>
+                            <td>@item.Inventory.Material.Quantity</td>
+                        }
+                        <td>@item.Cost</td>
+                        <td>@Html.DisplayFor(qcd => item.QualityCheckingGrade)</td>
+                        <td>
+                            @Html.ActionLink("✏️", "Edit", "OrderItem", new { id=item.OrderItemId }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("🗑️", "Delete", "OrderItem", new { id=item.OrderItemId }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section SideContent {
+    <p>История:</p>
+    <hr />
+    <ul style="list-style-type: none;">
+        @foreach (var ph in Model.OrderHistories.OrderByDescending(h => h.CreatedAt))
+        {
+            <li>@ph.CreatedAt.ToShortDateString(): @Html.DisplayFor(m => ph.OrderStatus) <hr /> </li>
+        }
+    </ul>
+ }

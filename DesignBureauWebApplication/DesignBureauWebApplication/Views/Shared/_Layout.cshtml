@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - КБ "Роботник"</title>
+	<link rel="shortcut icon" type="image/png" href="C:\Users\Пользователь\source\repos\DesignBureauWebApplication\DesignBureauWebApplication\wwwroot\logotab.png" />
+    <!-- Add Bootstrap CDN links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Add custom CSS for layout -->
+    <style>
+
+        /*.fc-event {
+  background-color: #fff;
+  color: #000;
+}
+
+.fc-toolbar {
+  background-color: #000;
+  color: #fff;
+}
+
+.fc-button-primary {
+  background-color: #000;
+  color: #fff;
+}
+
+.fc-button-group {
+  border: none;
+}
+
+.fc-day-header {
+  background-color: #fff;
+  color: #000;
+}
+
+.fc-today {
+  background-color: #fff;
+  color: #000;
+}
+
+.fc-day {
+  background-color: #fff;
+  color: #000;
+}
+
+.fc-head {
+  background-color: #fff;
+  color: #000;
+}
+*/
+        /* Header styles */
+        .header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: /*fixed;*/ absolute;
+            top: 123px;
+            left: 0;
+            width: 250px;
+            height: /*100%;*/ 80%;
+            background-color: #343a40;
+            overflow-x: hidden;
+            transition: 0.5s;
+            border-radius: 10px;
+        }
+
+        .sidebar.active {
+            left: -250px; /* Hide sidebar when active */
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            margin-top: 60px; /* Adjust margin to avoid header */
+        }
+
+        .sidebar ul li a {
+            display: block;
+            color: white;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            background-color:#007bff; /* Change color on hover */
+        }
+
+        /* Content styles */
+        .content-wrapper {
+          margin-left: 250px; /* Adjust margin to avoid sidebar */
+          padding-top :10px;
+          padding-left :10px;
+          padding-right :10px;
+          min-height :100vh;
+          display :flex;
+          flex-direction :row;
+          justify-content :space-between;
+          align-items :stretch;
+          transition: 0.5s;
+         }
+
+         .content-main {background-color:#f8f9fa;border-radius :10px;padding :20px;width :70%;transition :0.5s;}
+         .content-login {background-color:#f8f9fa;border-radius :10px; padding-top: 7%; width :50%; position: absolute; top: 10%; left:25%; height: 80%}
+         .content-side {background-color:#f8f9fa;border-radius :10px;padding :20px;width :28%;transition :0.5s;}
+
+         @Html.Raw("@")media (max-width:768px) { /* Adjust layout for smaller screens */
+           .sidebar {left:-250px} /* Hide sidebar by default */
+           .content-wrapper {margin-left :0} /* Remove margin for content wrapper */
+           .content-main,.content-side {width :100%;margin-bottom :10px} /* Make content areas full width and add some margin between them */
+         }
+
+         .content-wrapper.active {
+          margin-left: 20px; /* Adjust margin to avoid sidebar */
+          padding-top :10px;
+          padding-left :10px;
+          padding-right :10px;
+          min-height :100vh;
+          display :flex;
+          flex-direction :row;
+          justify-content :space-between;
+          align-items :stretch
+         }
+    </style>
+
+</head>
+<body>
+    @if (!(ViewData["IsLogin"] as bool? == true))
+    {
+    <!-- Header section -->
+    <div class="header" style="display: flex; flex-direction: row; justify-content:space-between">
+        <div>
+@*          <img src="/logo.png" alt="Robotnik Logo" width="50" height="50" />
+*@          <h1>РОБОЛАБ</h1>
+            <!-- Add a button to toggle sidebar -->
+                <button type="button" class="btn btn-light" id="sidebar-toggle" style="border-color:lightgray;">☰</button>
+            <!-- Add a script to toggle sidebar -->
+            <script>
+                $(document).ready(function () {
+                    $("#sidebar-toggle").click(function () {
+                    $(".sidebar").toggleClass("active"); // Add or remove active class
+                    $(".content-wrapper").toggleClass("active"); // Add or remove active class
+                    });
+                });
+            </script>
+        </div>
+        <div style="margin-top: 2%">
+@*            <button type="button" class="btn btn-primary">Вход</button>
+            <button type="button" class="btn btn-success">Регистрация</button>*@
+            <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @User.Identity.Name
+                </button>
+                <div class="dropdown-menu" aria-labelledby="account-dropdown">
+                    <a class="dropdown-item" href="#">Выйти</a>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Logout", "Account")'">Выйти</button>
+        </div>
+    </div>
+
+        <!-- Sidebar section -->
+        <div class="sidebar">
+          <li class="nav-title">
+            <ui>
+                <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index">Проекты</a>
+            </ui>
+            <ui>
+                <a class="nav-link text-white" asp-area="" asp-controller="Order" asp-action="Index">Заказы</a>
+            </ui>
+            <ui>
+                <a class="nav-link text-white" asp-area="" asp-controller="Transportation" asp-action="Index">Перевозки</a>
+            </ui>
+            <ui>
+                <a class="nav-link text-white" asp-area="" asp-controller="Equipment" asp-action="Index">Оборудование</a>
+            </ui>
+            <ui>
+                <a class="nav-link text-white" asp-area="" asp-controller="Material" asp-action="Index">Материалы</a>
+            </ui>
+            <ui>
+                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Справочники</a>
+            </ui>
+            @if (User.IsInRole("admin"))
+                {
+                <ui>
+                    <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Пользователи⚙️</a>
+                </ui>
+                }
+          </li>
+        </div>
+    }
+
+     <!-- Content section -->
+     <div class="content-wrapper">
+       <!-- Main content area -->
+        @if (!(ViewData["IsLogin"] as bool? == true))
+        {
+            <div class="content-main">
+               @RenderBody() <!-- Render the content of the view -->
+            </div>
+        }
+        else
+        {
+            <div class="content-login">
+               @RenderBody() <!-- Render the content of the view -->
+            </div>
+        }
+        @if (!(ViewData["IsLogin"] as bool? == true))
+        {
+            <!-- Side content area -->
+            <div class="content-side">
+                @RenderSection("SideContent", required: false)
+            </div>
+        }
+     </div>
+
+</body>
+
+</html>

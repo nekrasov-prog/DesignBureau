@@ -1,0 +1,243 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@using DesignBureauWebApplication.Data.Enum;
+@using System.ComponentModel.DataAnnotations;
+@model DetailsProjectViewModel
+
+<style>
+    .btn.btn-light {
+        border-color: lightgray;
+    }
+
+    .work-row:hover {
+        cursor: pointer;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="display :flex; flex-direction :row;justify-content :space-between;">
+                @Html.ActionLink("←", "Index", new {}, new { @class = "btn btn-light" })
+                <div>
+                    @if (@Model.LastProjectStatus != null && @Model.LastProjectStatus == ProjectStatus.Idea)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="launch">
+                            🚀
+                        </button>
+                    }
+                    else if (@Model.LastProjectStatus == ProjectStatus.Launch)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="planning">
+                            📋
+                        </button>
+                    }
+                    else if (@Model.LastProjectStatus == ProjectStatus.Planning)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="execution">
+                            ⚙️
+                        </button>
+                    }
+                    else if (@Model.LastProjectStatus == ProjectStatus.Execution)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="completed">
+                            🎉
+                        </button>
+                    }
+                    @if (@Model.LastProjectStatus != null && @Model.LastProjectStatus == ProjectStatus.Frozen)
+                    {
+                        <button type="button" class="btn btn-warning rounded-2" data-toggle="modal" data-target="#myModal" data-action="unfrozen">
+                            🌡️
+                        </button>
+                    }
+                    else if (@Model.LastProjectStatus != ProjectStatus.Completed)
+                    {
+                        <button type="button" class="btn btn-warning rounded-2" data-toggle="modal" data-target="#myModal" data-action="frozen">
+                            🧊
+                        </button>
+                    }
+                    @Html.ActionLink("✏️", "Edit", new { id=@Model.ProjectId }, new { @class = "btn btn-primary rounded-2" })
+                    <button type="button" class="btn btn-danger rounded-2" data-toggle="modal" data-target="#myModal" data-action="cancelled">🗑️</button>
+                </div>
+            </div>
+
+            <nav aria-label="breadcrumb" style="margin-top: 5%;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Project", new { })">Проекты</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.ProjectTitle</li>
+                </ol>
+            </nav>
+
+            <h2 style="margin-top: 5%">@Model.ProjectTitle</h2>
+            <p text-muted>@Html.DisplayFor(model => model.LastProjectStatus)</p>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Сроки проекта</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-5">Начало:</dt>
+                        <dd class="col-sm-7">@Model.PlanStartDate.ToShortDateString()</dd>
+
+                        <dt class="col-sm-5">Окончание:</dt>
+                        <dd class="col-sm-7">@Model.PlanOverDate.ToShortDateString()</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Прогресс проекта</h4>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: @Model.Progress%">
+                            @Model.Progress%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.LastProjectStatus == ProjectStatus.Idea)
+    {
+        <div class="d-flex justify-content-center align-items-center" style="height: 20vh;">
+            <button type="button" class="btn btn-lg btn-success rounded-2" style="color:white;" data-toggle="modal" data-target="#myModal" data-action="launch">
+                Запустить проект🚀
+            </button>
+        </div>
+    }
+    else
+    {
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h2>Работы по проекту</h2>
+                @if (Model.LastProjectStatus != ProjectStatus.Cancelled && Model.LastProjectStatus != ProjectStatus.Completed && Model.LastProjectStatus != ProjectStatus.Frozen)
+                {
+                    <p>
+                        @Html.ActionLink("✚", "Create", "Work", new { projectId = Model.ProjectId }, new { @class = "btn btn-primary" })
+                    </p>
+                }
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Работа</th>
+                            <th>Начало</th>
+                            <th>Окончание</th>
+                            @if (Model.LastProjectStatus != ProjectStatus.Cancelled && Model.LastProjectStatus != ProjectStatus.Completed && Model.LastProjectStatus != ProjectStatus.Frozen)
+                            {
+                                <th></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var work in Model.Works)
+                        {
+                            <tr>
+                                <td class="work-row">
+                                    <a href="@Url.Action("Details", "Work", new { id = work.WorkId })" style="color: #191919; font-weight:600;">
+                                        @work.WorkDictionary.WorkTitle &#128279;
+                                    </a>
+                                </td>
+                                <td>@work.PlanStartDate.ToShortDateString()</td>
+                                <td>@work.PlanOverDate.ToShortDateString()</td>
+                                @if (Model.LastProjectStatus != ProjectStatus.Cancelled && Model.LastProjectStatus != ProjectStatus.Completed && Model.LastProjectStatus != ProjectStatus.Frozen)
+                                {
+                                    <td>
+                                        @Html.ActionLink("✏️", "Edit", "Work", new { id=work.WorkId }, new { @class = "btn btn-primary btn-sm rounded-2" })
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <a href="#" class="btn btn-primary">Да</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(function () {
+        $('#myModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Кнопка, вызвавшая окно
+            var action = button.data('action'); // Извлечение информации
+
+            var modal = $(this);
+            if (action == 'launch') {
+                modal.find('.modal-title').text('Запуск проекта');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите запустить проект?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.ProjectId })');
+            } else if (action == 'planning') {
+                modal.find('.modal-title').text('Планирование проекта');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите перейти к планированию?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.ProjectId })');
+            } else if (action == 'execution') {
+                modal.find('.modal-title').text('Исполнение проекта');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите перейти к исполнению?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.ProjectId })');
+            } else if (action == 'completed') {
+                modal.find('.modal-title').text('Завершение проекта');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите завершить проект?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.ProjectId })');
+            } else if (action == 'unfrozen') {
+            modal.find('.modal-title').text('Разморозка проекта');
+            modal.find('.modal-body').html('<p>Вы уверены, что хотите разморозить проект?');
+            modal.find('.modal-footer a').attr('href', '@Url.Action("Freeze", new { id = Model.ProjectId })');
+            }
+            else if (action == 'frozen') {
+                modal.find('.modal-title').text('Заморозка проекта');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите заморозить проект?');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("Freeze", new { id = Model.ProjectId })');
+            }
+            else if (action == 'cancelled') {
+                modal.find('.modal-title').text('Отмена проекта');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите отменить проект?');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("Cancel", new { id = Model.ProjectId })');
+            }
+        });
+    });
+
+</script>
+
+@section SideContent {
+    <p>История:</p>
+    <hr />
+    <ul style="list-style-type: none;">
+        @foreach (var ph in Model.ProjectHistories.OrderByDescending(h => h.CreatedAt))
+        {
+            <li>@ph.CreatedAt.ToShortDateString(): @Html.DisplayFor(m => ph.ProjectStatus) <hr /> </li>
+        }
+    </ul>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary btn-md">Управлять</a>
+    </div>
+ }

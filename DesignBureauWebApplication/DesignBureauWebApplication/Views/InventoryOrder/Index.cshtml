@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DesignBureauWebApplication.Models.InventoryOrder>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*<h1 style="margin-top: 10%">Список инвентаря по заказам</h1>
+<hr />
+<div class="container">
+    @foreach (var group in Model.GroupBy(io => io.OrderId))
+    {
+        <div class="jumbotron">
+            <h2 style="margin-top: 5%">Заказ @group.First().Order.ContractNumber</h2>
+            <p>
+                @Html.ActionLink("✚", "Create", new{ id=group.First().Order.OrderId }, new { @class="btn btn-primary" })
+            </p>
+            <div class="row">
+                    <table class="table table-hover table-responsive">
+                        <tr>
+                            <th>
+                                Инвентарь
+                            </th>
+                            <th>
+                                Статус заказа
+                            </th>
+                            <th>
+                                Дата доставки
+                            </th>
+                            <th>
+                                Стоимость
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in group)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Inventory.InventoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OrderStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PlanDeliveryDateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cost)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("✏️", "Edit", new { id=item.OrderId }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("🔍", "Details", new { id=item.OrderId }, new { @class = "btn btn-success" })
+                                    @Html.ActionLink("🗑️", "Delete", new { id=item.OrderId }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+            </div>
+        </div>
+    }
+</div>*@

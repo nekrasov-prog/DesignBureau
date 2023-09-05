@@ -1,0 +1,48 @@
+﻿@using DesignBureauWebApplication.Data.Enum;
+@model IEnumerable<DesignBureauWebApplication.ViewModels.DetailsOrderViewModel>
+
+<h2>Заказы</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("✚", "Create", new{}, new { @class="btn btn-primary" })
+</p>
+
+<table class="table table-hover table-responsive-sm">
+    <thead>
+        <tr>
+            <th>
+                Номер контракта
+            </th>
+            <th>
+                Поставщик
+            </th>
+            <th>
+                Статус
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">
+                    @Html.DisplayFor(modelItem => item.ContractNumber)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.SName)
+                </td>
+                <td class="col-2">
+                    @Html.DisplayFor(modelItem => item.LastOrderStatus)
+                </td>
+                <td>
+                    @Html.ActionLink("✏️", "Edit", new { id=item.OrderId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("🔍", "Details", new { id=item.OrderId }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("🗑️", "Delete", new { id=item.OrderId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

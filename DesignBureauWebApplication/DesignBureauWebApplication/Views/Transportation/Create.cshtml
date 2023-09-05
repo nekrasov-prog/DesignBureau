@@ -1,0 +1,31 @@
+﻿@using DesignBureauWebApplication.ViewModels
+@model TransportationViewModel
+
+<h1>Новая перевозка</h1>
+<hr />
+
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="PlanDepartureDateTime">Отправление</label>
+        <input asp-for="PlanDepartureDateTime" class="form-control" />
+        <span asp-validation-for="PlanDepartureDateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PlanArrivalDateTime">Прибытие</label>
+        <input asp-for="PlanArrivalDateTime" class="form-control" />
+        <span asp-validation-for="PlanArrivalDateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OriginId">Пункт отправления</label>
+        <select asp-for="OriginId" asp-items="@Model.OriginList" class="form-control"></select>
+        <span asp-validation-for="OriginId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DestinationId">Пункт назначения</label>
+        <select asp-for="DestinationId" asp-items="@Model.DestinationList" class="form-control"></select>
+        <span asp-validation-for="DestinationId" class="text-danger"></span>
+    </div>
+    @Html.ActionLink("←Назад", "Index", new{ }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    @Html.ActionLink("К составу перевозки→", "Create", "InventoryTransportation", new{ id=Model.TransportationId }, new { @class = "btn btn-secondary" })
+</form>

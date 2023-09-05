@@ -1,0 +1,83 @@
+﻿@using DesignBureauWebApplication.ViewModels
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Регистрация";
+    ViewData["IsRegister"] = true;
+}
+
+<h2>Регистрация</h2>
+<hr />
+
+@if (TempData["Error"] != null)
+{
+    <div class="col-md-12 alert alert-danger">
+        <span><b>Ошибка!</b> - @TempData["Error"] </span>
+    </div>
+}
+
+<form asp-action="Register">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group" style="display: flex; flex-direction: row;">
+        <div style="margin-right: 5%">
+            <label asp-for="ELastName">Фамилия</label>
+            <input asp-for="ELastName" class="form-control" />
+            <span asp-validation-for="ELastName" class="text-danger"></span>
+        </div>
+        <div style="margin-right: 5%">
+            <label asp-for="EFirstName">Имя</label>
+            <input asp-for="EFirstName" class="form-control" />
+            <span asp-validation-for="EFirstName" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="EPatronymic">Отчество</label>
+            <input asp-for="EPatronymic" class="form-control" />
+            <span asp-validation-for="EPatronymic" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group" style="display: flex; flex-direction: row;">
+        <div class="form-group" style="margin-right: 5%">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" class="form-control" />
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div style="margin-right: 5%">
+            <label asp-for="PhoneNumber">Номер телефона</label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="BirthDate">Дата рождения</label>
+            <input asp-for="BirthDate" class="form-control" />
+            <span asp-validation-for="BirthDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group" style="display: flex; flex-direction: row;">
+        <div class="form-group" style="margin-right: 5%">
+            <label asp-for="Password" class="control-label">Пароль</label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" class="control-label">Повторите пароль</label>
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group" style="display: flex; flex-direction: row;">
+        <div class="form-group" style="margin-right: 5%">
+            <label asp-for="PositionId" class="control-label">Должность</label>
+            <select asp-for="PositionId" asp-items="@Model.PositionList" class="form-control"></select>
+            <span asp-validation-for="PositionId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserRole" class="control-label">Роль</label>
+            <select asp-for="UserRole" asp-items="@Model.UserRoleList" class="form-control"></select>
+            <span asp-validation-for="UserRole" class="text-danger"></span>
+        </div>
+    </div>
+
+    @Html.ActionLink("←Назад", "Index", "Employee", new{ }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DesignBureauWebApplication.Models.Location>
+
+@{
+}
+
+<h2>Локации</h2>
+
+<p>
+    @Html.ActionLink("✚", "Create", new{}, new { @class="btn btn-primary" })
+</p>
+<table class="table table-hover table-responsive">
+    <tr>
+        <th>
+            Локация
+        </th>
+        <th>
+            Адрес
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.Street), @Html.DisplayFor(modelItem => item.HouseNumber)
+            </td>
+            <td>
+                @Html.ActionLink("✏️", "Edit", new { id=item.LocationId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("🔍", "Details", new { id=item.LocationId }, new { @class = "btn btn-success" })
+                @Html.ActionLink("🗑️", "Delete", new { id=item.LocationId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

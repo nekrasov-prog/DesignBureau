@@ -1,0 +1,75 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model DetailsEquipmentViewModel
+
+<style>
+    .btn.btn-light {
+        border-color: lightgray;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="display :flex; flex-direction :row;justify-content :space-between;">
+                @Html.ActionLink("←", "Index", new {}, new { @class = "btn btn-light" })
+                <div>
+                    <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="outofservice">
+                        🔴
+                    </button>
+                    <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="underrepair">
+                        🟡
+                    </button>
+                    <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="reserved">
+                        🟣
+                    </button>
+                    @Html.ActionLink("✏️", "Edit", new { id=@Model.EquipmentId }, new { @class = "btn btn-primary rounded-2" })
+                    @Html.ActionLink("🗑️", "Delete", new { id=@Model.EquipmentId }, new { @class = "btn btn-danger rounded-2" })
+                </div>
+            </div>
+            @if (Model.EquipmentDictionary != null)
+            {
+                <h2 style="margin-top: 5%">@Model.EquipmentDictionary.EquipmentName - @Model.EquipmentId</h2>
+            }
+            else
+            {
+                <h2 style="margin-top: 5%">Экземпляр - @Model.EquipmentId</h2>
+            }
+            <p text-muted>@Html.DisplayFor(model => model.ActualEquipmentStatus)</p>
+            <hr />
+            <p><strong>Тип:</strong> @Html.DisplayFor(modelItem => Model.EquipmentDictionary.EquipmentType)</p>
+            <p><strong>Местонахождение:</strong> @Model.Inventory.Location.City,
+                @Model.Inventory.Location.Street, @Model.Inventory.Location.HouseNumber
+            </p>
+            <div id='calendar'></div>
+        </div>
+    </div>
+</div>
+
+@section SideContent {
+    <p>История:</p>
+    <hr />
+    <ul style="list-style-type: none;">
+        @foreach (var ph in Model.EquipmentHistories.OrderByDescending(h => h.StatusStart))
+        {
+            <li>
+                @if (ph.StatusEnd != null)
+                {
+                  <p>
+                        @Html.DisplayFor(m => ph.EquipmentStatus): <br />
+                        @ph.StatusStart.ToString("dd.MM.yyyy HH:mm") <br /> | <br /> @ph.StatusEnd.Value.ToString("dd.MM.yyyy HH:mm") <br />
+                  </p>
+                  <hr />
+                }
+                else
+                {
+                    <p>
+                        @Html.DisplayFor(m => ph.EquipmentStatus): <br />
+                        @ph.StatusStart.ToString("dd.MM.yyyy HH:mm") <br /> | <br /> ...
+                    </p>
+                    <hr />
+
+                }
+            </li>
+        }
+    </ul>
+ }

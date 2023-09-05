@@ -1,0 +1,38 @@
+﻿@using DesignBureauWebApplication.Models;
+@using DesignBureauWebApplication.Data.Enum;
+@using System.Globalization;
+@*@using DesignBureauWebApplication.Extensions
+@using DesignBureauWebApplication.ViewModels*@
+@model IEnumerable<DesignBureauWebApplication.Models.Work>
+
+<h1 style="padding-top: 10%">Список работ по проектам</h1>
+<hr />
+<div class="container">
+    @foreach (var group in Model.GroupBy(w => w.ProjectId))
+    {
+        <div class="jumbotron">
+            <h2 style="margin-top: 5%">@group.First().Project.ProjectTitle</h2>
+            <p>
+                @Html.ActionLink("✚", "Create", new{ id=group.First().Project.ProjectId }, new { @class="btn btn-primary" })
+            </p>
+            <div class="row">
+                @foreach (var work in group)
+                {
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@work.WorkDictionary.WorkTitle</h5>
+                                <p class="card-text"> @work.PlanStartDate.ToShortDateString() - @work.PlanOverDate.ToShortDateString()</p>
+                                <div class="btn-group gap-2">
+                                    @Html.ActionLink("🔍", "Details", new { id=work.WorkId }, new { @class = "btn btn-success rounded-2" })
+                                    @Html.ActionLink("✏️", "Edit", new { id=work.WorkId }, new { @class = "btn btn-primary rounded-2" })
+                                    @Html.ActionLink("🗑️", "Delete", new { id=work.WorkId }, new { @class = "btn btn-danger rounded-2" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

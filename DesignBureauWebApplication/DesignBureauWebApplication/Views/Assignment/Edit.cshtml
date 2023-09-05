@@ -1,0 +1,32 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model AssignmentViewModel;
+
+<h2>Редактировать задачу</h2>
+<hr />
+
+<form method="post" asp-action="Edit">
+    <input type="hidden" value="AssignmentId" id="AssignmentId" />
+    <div class="form-group">
+        <label asp-for="AssignmentDictionaryId">Задача</label>
+        <select asp-for="AssignmentDictionaryId" asp-items="@Model.AssignmentDictionaryList" class="form-control"></select>
+        <span asp-validation-for="AssignmentDictionaryId" class="text-danger"></span>
+    </div>
+    <input type="hidden" name="WorkId" value="@Model.WorkId" />
+    <div class="form-group">
+        <label asp-for="WorkId">Работа</label>
+        <input value="@Model.Work?.WorkDictionary.WorkTitle" class="form-control" readonly />
+        <span asp-validation-for="WorkId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StartDate">Начало</label>
+        <input asp-for="StartDate" class="form-control" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EndDate">Окончание</label>
+        <input asp-for="EndDate" class="form-control" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    @Html.ActionLink("←Назад", "Details", "Work", new{ id = Model.WorkId }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>

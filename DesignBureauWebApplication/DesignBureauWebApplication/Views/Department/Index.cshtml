@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DesignBureauWebApplication.Models.Department>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*<h2>Отделы</h2>
+
+<p>
+    @Html.ActionLink("✚", "Create", new{}, new { @class="btn btn-primary" })
+</p>
+<table class="table table-hover table-responsive">
+    <tr>
+        <th>
+            Отдел
+        </th>
+        <th>
+            Адрес
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.Address)
+            </td>
+            <td>
+                @Html.ActionLink("✏️", "Edit", new { id=item.DepartmentId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("🔍", "Details", new { id=item.DepartmentId }, new { @class = "btn btn-success" })
+                @Html.ActionLink("🗑️", "Delete", new { id=item.DepartmentId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>*@

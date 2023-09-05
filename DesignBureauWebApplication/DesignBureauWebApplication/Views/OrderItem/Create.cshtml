@@ -1,0 +1,66 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model OrderItemViewModel
+
+@*<h2>Новая позиция в заказе @Model.Order.ContractNumber</h2>
+*@<hr />
+
+<form method="post" asp-action="Create">
+    <input type="hidden" name="OrderId" value="@Model.OrderId" />
+    <!-- Switch для выбора между списками оборудования и материалов -->
+    <div class="form-group">
+        <div style="display: flex; flex-wrap: nowrap; justify-content: space-between; width: 15%;">
+            <div style="flex-grow: 1; margin-right: 7%">Оборудование</div>
+            <div style="flex-grow: 1;">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="equipment-material-switch">
+                    <label class="custom-control-label" for="equipment-material-switch" data-on="Оборудование" data-off="Материалы"></label>
+                </div>
+            </div>
+            <div style="flex-grow: 1;">Материалы</div>
+        </div>
+    </div>
+    <!-- Список выбранного оборудования -->
+    <div class="form-group" id="equipment-list">
+        <select asp-for="SelectedEquipmentDictionaryId" asp-items="@Model.EquipmentDictionaryList" class="form-control"></select>
+        <span asp-validation-for="SelectedEquipmentDictionaryId" class="text-danger"></span>
+    </div>
+    <!-- Список выбранных материалов -->
+    <div class="form-group" id="material-list" style="display:none">
+        <select asp-for="SelectedMaterialDictionaryId" asp-items="@Model.MaterialDictionaryList" class="form-control"></select>
+        <span asp-validation-for="SelectedMaterialDictionaryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity">Количество</label>
+        <input asp-for="Quantity" class="form-control" style="width: 20%;" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cost">Стоимость</label>
+        <input asp-for="Cost" class="form-control" style="width: 20%;" />
+        <span asp-validation-for="Cost" class="text-danger"></span>
+    </div>
+    @Html.ActionLink("←Назад", "Details", "Order", new{ id = Model.OrderId }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    @Html.ActionLink("Сохранить и добавить еще один", "Create", "OrderItem", new{ id=Model.OrderId }, new { @class = "btn btn-primary" })
+</form>
+
+<script>
+    $(function () {
+        // Сброс значения списка материалов при выборе оборудования и наоборот
+        $('#equipment-material-switch').change(function () {
+            if ($(this).prop('checked')) {
+                // Показать список оборудования и скрыть список материалов
+                $('#equipment-list').show();
+                $('#material-list').hide();
+                // Сбросить значение списка материалов
+                $('#SelectedMaterialDictionaryId').val(0);
+            } else {
+                // Показать список материалов и скрыть список оборудования
+                $('#equipment-list').hide();
+                $('#material-list').show();
+                // Сбросить значение списка оборудования
+                $('#SelectedEquipmentDictionaryId').val(0);
+            }
+        });
+    });
+</script>

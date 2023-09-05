@@ -1,0 +1,63 @@
+﻿@using DesignBureauWebApplication.ViewModels
+@model TransportationForOrderViewModel
+
+<nav aria-label="breadcrumb" style="margin-top: 5%;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Order", new { })">Заказы</a></li>
+        <li class="breadcrumb-item"><a href="@Url.Action("Details", "Order", new { id = Model.OrderId })">Заказ ABC123</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Добавить доставку</li>
+    </ol>
+</nav>
+
+<h2>Доставка заказа</h2>
+<hr />
+
+<form method="post" asp-action="CreateTransportationForOrder">
+    <input type="hidden" name="OrderId" value="@Model.OrderId" />
+    <div class="form-group">
+        <label asp-for="PlanArrivalDateTime">Прибытие</label>
+        <input asp-for="PlanArrivalDateTime" class="form-control" />
+        <span asp-validation-for="PlanArrivalDateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DestinationId">Пункт назначения</label>
+        <select asp-for="DestinationId" asp-items="@Model.DestinationList" class="form-control"></select>
+        <span asp-validation-for="DestinationId" class="text-danger"></span>
+    </div>
+    @if (Model.Inventories != null)
+    {
+        foreach (var inventory in Model.Inventories)
+        {
+            <div>
+                <input type="checkbox" id="@($"inventory-{inventory.InventoryId}")" name="InventorySelection[@inventory.InventoryId]" value="true" class="inventory-checkbox" />
+                @if (inventory.MaterialId != null)
+                {
+                    <label for="@($"inventory-{inventory.InventoryId}")">@inventory.Material.MaterialDictionary.MaterialName</label>
+                    <input type="number" id="@($"quantity-{inventory.InventoryId}")" name="Quantities[@inventory.InventoryId]" value="@Model.Quantities[inventory.InventoryId]" min="0" max="@inventory.Material.Quantity" class="quantity-input" disabled />
+                    @($"/{inventory.Material.Quantity}")
+                }
+                else
+                {
+                    <label for="@($"inventory-{inventory.InventoryId}")">@inventory.Equipment.EquipmentDictionary.EquipmentName</label>
+                    <input type="hidden" id="@($"quantity-{inventory.InventoryId}")" name="Quantities[@inventory.InventoryId]" value="1" />
+                }
+            </div>
+        }
+    }
+    <hr />
+    @Html.ActionLink("←Назад", "Details", new{ id = Model.OrderId }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('.inventory-checkbox').change(function () {
+            var inventoryId = $(this).attr('id').split('-')[1];
+            if ($(this).is(':checked')) {
+                $('#quantity-' + inventoryId).prop('disabled', false);
+            } else {
+                $('#quantity-' + inventoryId).prop('disabled', true).val(0);
+            }
+        });
+    });
+</script>

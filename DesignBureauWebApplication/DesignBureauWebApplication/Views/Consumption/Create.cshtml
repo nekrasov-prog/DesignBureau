@@ -1,0 +1,54 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model ConsumptionViewModel
+
+<h2>Расход материалов</h2>
+<hr />
+
+<form method="post" id="consumptionForm">
+    <input type="hidden" value="AssignmentId" id="AssignmentId" />
+    @*@if (Model.Materials != null)
+    {
+        @foreach (var material in Model.Materials)
+        {
+            <div>
+                <input type="checkbox" id="@($"material-{material.MaterialId}")" name="MaterialSelection[@material.MaterialId]" value="true" class="material-checkbox" />
+                <label for="@($"material-{material.MaterialId}")">@material.MaterialDictionary.MaterialName</label>
+                <input type="number" id="@($"quantity-{material.MaterialId}")" name="Quatities[@material.MaterialId]" value="@Model.Quatities[material.MaterialId]" min="0" class="quantity-input" disabled />
+            </div>
+        }
+    }*@
+    @if (Model.Materials != null)
+    {
+        var materialsByLocation = Model.Materials.Where(m => m.Inventory != null && m.Inventory.Location != null)
+            .GroupBy(m => m.Inventory.Location.LocationId);
+        foreach (var locationGroup in materialsByLocation)
+        {
+            <h5 style="margin-top: 5%">@locationGroup.First().Inventory.Location.City, @locationGroup.First().Inventory.Location.Street, @locationGroup.First().Inventory.Location.HouseNumber</h5>
+            foreach (var material in locationGroup)
+            {
+                <div>
+                    <input type="checkbox" id="@($"material-{material.MaterialId}")" name="MaterialSelection[@material.MaterialId]" value="true" class="material-checkbox" />
+                    <label for="@($"material-{material.MaterialId}")">@material.MaterialDictionary.MaterialName</label>
+                    <input type="number" id="@($"quantity-{material.MaterialId}")" name="Quantities[@material.MaterialId]" value="@Model.Quantities[material.MaterialId]" min="0" max="@material.Quantity" class="quantity-input" disabled />
+                    /@material.Quantity
+                </div>
+            }
+        }
+    }
+    <hr />
+    @Html.ActionLink("←Назад", "Details", "Assignment", new{ id = Model.AssignmentId }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('.material-checkbox').change(function () {
+            var materialId = $(this).attr('id').split('-')[1];
+            if ($(this).is(':checked')) {
+                $('#quantity-' + materialId).prop('disabled', false);
+            } else {
+                $('#quantity-' + materialId).prop('disabled', true).val(0);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,78 @@
+﻿@using DesignBureauWebApplication.Data.Enum;
+@model IEnumerable<DesignBureauWebApplication.ViewModels.DetailsEquipmentViewModel>
+
+<h2>Оборудование</h2>
+
+<div class="mb-3 row">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="Поиск">
+    </div>
+    <div class="col-sm-4">
+        <select class="form-control" id="status-filter" name="statusFilter">
+            <option value="">Все статусы</option>
+            @foreach (var status in Enum.GetValues(typeof(EquipmentStatus)))
+            {
+                <option value="@((int)status)">@((EquipmentStatus)status)</option>
+@*                <option value="@status">@((EquipmentStatus)status)</option>
+*@            }
+        </select>
+    </div>
+    <div class="col-sm-4">
+        <button type="submit" class="btn btn-secondary" id="apply-filter">Применить</button>
+    </div>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("✚", "Create", new{}, new { @class="btn btn-primary" })
+</p>
+<table class="table table-hover table-responsive-sm">
+    <thead>
+        <tr>
+            <th scope="col">Оборудование</th>
+            <th scope="col">Тип</th>
+            <th scope="col">Местоположение</th>
+            <th scope="col">Статус</th>
+            <th scope="col">До</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var equipment in Model)
+        {
+            <tr data-type="@equipment.ActualEquipmentStatus">
+                <th class="col-2" scope="row">@equipment.EquipmentDictionary.EquipmentName</th>
+                <td class="col-2">@Html.DisplayFor(modelItem => equipment.EquipmentDictionary.EquipmentType)</td>
+                <td class="col-3">@(equipment.Inventory != null && equipment.Inventory.Location != null ? $"{equipment.Inventory.Location.City}, {equipment.Inventory.Location.Street}, {equipment.Inventory.Location.HouseNumber}" : "")</td>
+                <td class="col-2">@Html.DisplayFor(modelItem => equipment.ActualEquipmentStatus)</td>
+                <td class="col-2">@(equipment.EquipmentHistories.Any() ? equipment.EquipmentHistories.OrderByDescending(es => es.StatusEnd).First().StatusEnd?.ToString("dd.MM.yyyy") : "")</td>
+                <td class="col-3">
+                    <a href="@Url.Action("Edit", "Equipment", new { id = equipment.EquipmentId })" class="btn btn-sm btn-primary">✏️</a>
+                    <a href="@Url.Action("Details", "Equipment", new { id = equipment.EquipmentId })" class="btn btn-sm btn-success">🔍</a>
+                    <a href="@Url.Action("Delete", "Equipment", new { id = equipment.EquipmentId })" class="btn btn-sm btn-danger" onclick="return confirm('Вы действительно хотите удалить это оборудование?')">🗑️</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<script>
+    $('#apply-filter').click(function (event) {
+        event.preventDefault(); // Остановка отправки формы при нажатии кнопки "Применить"
+        var filterText = $('#search-input').val().toLowerCase();
+        var statusFilter = $('#status-filter').val().toLowerCase();
+
+        $('tbody tr').each(function () {
+            var row = $(this);
+            var name = row.find('th').text().toLowerCase();
+            var status = row.find('td:eq(3)').text().toLowerCase();
+
+            if (!name.includes(filterText) || (statusFilter && status !== statusFilter)) {
+                row.hide();
+            } else {
+                row.show();
+            }
+        });
+    });
+</script>
+

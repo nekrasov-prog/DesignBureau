@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DesignBureauWebApplication.Models.Position>
+
+@{
+}
+
+<h2>Должности</h2>
+
+<p>
+    @Html.ActionLink("✚", "Create", new{}, new { @class="btn btn-primary" })
+</p>
+<table class="table table-hover table-responsive">
+    <tr>
+        <th>
+            Должность
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.ActionLink("✏️", "Edit", new { id=item.PositionId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("🔍", "Details", new { id=item.PositionId }, new { @class = "btn btn-success" })
+                @Html.ActionLink("🗑️", "Delete", new { id=item.PositionId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

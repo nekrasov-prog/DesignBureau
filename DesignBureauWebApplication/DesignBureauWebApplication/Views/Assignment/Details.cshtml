@@ -1,0 +1,227 @@
+﻿@using DesignBureauWebApplication.Data.Enum;
+@using DesignBureauWebApplication.ViewModels;
+@model DetailsAssignmentViewModel
+
+<style>
+    .btn.btn-light {
+        border-color: lightgray;
+    }
+
+    .work-row:hover {
+        cursor: pointer;
+        /*transform: scale(1.01);
+                transition: transform 0.5s;*/
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="display :flex; flex-direction :row;justify-content :space-between;">
+                @Html.ActionLink("←", "Details", "Work", new { id = Model.WorkId }, new { @class = "btn btn-light" })
+                <div>
+                    @if (Model.LastAssignmentStatus != null && Model.LastAssignmentStatus == AssignmentStatus.Preparation)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="start">
+                            🕒
+                        </button>
+                    }
+                    else if (Model.LastAssignmentStatus == AssignmentStatus.InProgress)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="finish">
+                            ✅
+                        </button>
+                    }
+                    @if (Model.LastAssignmentStatus != AssignmentStatus.Completed || Model.LastAssignmentStatus != AssignmentStatus.Cancelled)
+                    {
+                        @Html.ActionLink("✏️", "Edit", new { id=@Model.AssignmentId }, new { @class = "btn btn-primary rounded-2" })
+                    }
+                    <button type="button" class="btn btn-danger rounded-2" data-toggle="modal" data-target="#myModal" data-action="cancel">🗑️</button>
+                </div>
+            </div>
+
+            <nav aria-label="breadcrumb" style="margin-top: 5%;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Project", new { })">Проекты</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Details", "Project", new { id = Model.Work.ProjectId })">@Model.Work.Project.ProjectTitle</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Details", "Work", new { id = Model.WorkId })">@Model.Work.WorkDictionary.WorkTitle</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.AssignmentDictionary.AssignmentTitle</li>
+                </ol>
+            </nav>
+
+            <h4>@Model.AssignmentDictionary.AssignmentTitle</h4>
+            <p text-muted>@Html.DisplayFor(model => model.LastAssignmentStatus)</p>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Сроки задачи</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-5">Начало:</dt>
+                        <dd class="col-sm-7">@Model.StartDate.ToShortDateString()</dd>
+
+                        <dt class="col-sm-5">Окончание:</dt>
+                        <dd class="col-sm-7">@Model.EndDate.ToShortDateString()</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Ответственные</h4>
+                </div>
+
+                <div class="card-body" style="border-radius: 5px;">
+                    <div>
+                        <ol>
+                            @foreach (var e in Model.Executions)
+                            {
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>@e.Employee.Position.JobTitle: @e.Employee.ELastName @e.Employee.EFirstName @e.Employee.EPatronymic</span>
+                                    <a href="#" class="delete-link" data-execution-id="@e.ExecutionId">✖️</a>
+                                </li>
+                            }
+                        </ol>
+                        <hr />
+                        <form method="post" action="" id="delete-form" style="display:none; background-color: whitesmoke; padding: 5%; border-radius: 10px;">
+                            <div class="form-group">
+                                <p>Вы уверены?</p>
+                                <button type="submit" class="btn btn-danger">Удалить</button>
+                                <a href="@Url.Action("Details", "Assignment", new { id = Model.AssignmentId })" class="btn btn-secondary">Отмена</a>
+                            </div>
+                        </form>
+                        <a class="text-muted" href="@Url.Action("Create", "Execution", new { assignmentId = Model.AssignmentId })"><em>Добавить</em></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @if (Model.LastAssignmentStatus != AssignmentStatus.Created)
+    {
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h2>Расход</h2>
+                @if (Model.LastAssignmentStatus != AssignmentStatus.Cancelled && Model.LastAssignmentStatus != AssignmentStatus.Completed)
+                {
+                    <p>
+                        @Html.ActionLink("✚", "Create", "Consumption", new { AssignmentId = Model.AssignmentId }, new { @class = "btn btn-primary" })
+                    </p>
+                }
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Материал</th>
+                            <th>Количество</th>
+                            <th>Когда</th>
+                            @if (Model.LastAssignmentStatus != AssignmentStatus.Cancelled && Model.LastAssignmentStatus != AssignmentStatus.Completed)
+                            {
+                                <th></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var consumption in Model.Consumptions)
+                        {
+                            <tr>
+                                <td class="work-row">
+                                    @consumption.Material.MaterialDictionary.MaterialName, <br /> @Html.DisplayFor(m => consumption.Material.MaterialDictionary.MaterialType)
+                                </td>
+                                <td>-@consumption.Quantity</td>
+                                <td>@consumption.CreatedAt.ToShortDateString():@consumption.CreatedAt.ToShortTimeString()</td>
+                                @if (Model.LastAssignmentStatus != AssignmentStatus.Cancelled && Model.LastAssignmentStatus != AssignmentStatus.Completed)
+                                {
+                                    <td>
+                                        @Html.ActionLink("✏️", "Edit", "Consumption", new { id=consumption.ConsumptionId }, new { @class = "btn btn-primary btn-sm rounded-2" })
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <a href="#" class="btn btn-primary">Да</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section SideContent {
+    <p>История:</p>
+    <hr />
+    <ul style="list-style-type: none;">
+        @foreach (var ah in Model.AssignmentHistories.OrderByDescending(h => h.CreatedAt))
+        {
+            <li>@ah.CreatedAt.ToShortDateString(): @Html.DisplayFor(m => ah.AssignmentStatus) <hr /> </li>
+        }
+    </ul>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary btn-md">Управлять</a>
+    </div>
+ }
+
+<script>
+    var deleteLinks = document.getElementsByClassName("delete-link");
+    var deleteForm = document.getElementById("delete-form");
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener("click", function (event) {
+            event.preventDefault();
+
+            var executionId = this.getAttribute("data-execution-id");
+            var formAction = "@Url.Action("Delete", "Execution", new { id = "EXECUTION_ID" })".replace("EXECUTION_ID", executionId);
+
+            deleteForm.setAttribute("action", formAction);
+            deleteForm.style.display = "block";
+        });
+    }
+</script>
+
+<script>
+    $(function () {
+        $('#myModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Кнопка, вызвавшая окно
+            var action = button.data('action'); // Извлечение информации
+
+            var modal = $(this);
+            if (action == 'start') {
+                modal.find('.modal-title').text('Начало выполнения задачи');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите начать выполнение задачи?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.AssignmentId })');
+            } else if (action == 'finish') {
+                modal.find('.modal-title').text('Окончание выполнения задачи');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите завершить выполнение задачи?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.AssignmentId })');
+            } else if (action == 'cancel') {
+                modal.find('.modal-title').text('Отмена задачи');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите отменить задачу?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("Cancel", new { id = Model.AssignmentId })');
+            }
+        });
+    });
+</script>

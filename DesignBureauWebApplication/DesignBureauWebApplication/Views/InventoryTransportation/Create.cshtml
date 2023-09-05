@@ -1,0 +1,46 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model InventoryTransportationViewModel
+
+<h2>Перевозка</h2>
+<hr />
+
+<form method="post" asp-action="Create" id="inventoryTransportationForm">
+    <input type="hidden" value="@Model.TransportationId" name="TransportationId" />
+    @if (Model.Inventories != null)
+    {
+        <h5 style="margin-top: 5%">@(Model.Inventories.FirstOrDefault()?.Location?.City), @(Model.Inventories.FirstOrDefault()?.Location?.Street), @(Model.Inventories.FirstOrDefault()?.Location?.HouseNumber)</h5>
+        foreach (var inventory in Model.Inventories)
+        {
+            <div>
+                <input type="checkbox" id="@($"inventory-{inventory.InventoryId}")" name="InventorySelection[@inventory.InventoryId]" value="true" class="inventory-checkbox" />
+                @if (inventory.MaterialId != null)
+                {
+                    <label for="@($"inventory-{inventory.InventoryId}")">@inventory.Material.MaterialDictionary.MaterialName</label>
+                    <input type="number" id="@($"quantity-{inventory.InventoryId}")" name="Quantities[@inventory.InventoryId]" value="@Model.Quantities[inventory.InventoryId]" min="0" max="@inventory.Material.Quantity" class="quantity-input" disabled />
+                    @($"/{inventory.Material.Quantity}")
+                }
+                else
+                {
+                    <label for="@($"inventory-{inventory.InventoryId}")">@inventory.Equipment.EquipmentDictionary.EquipmentName</label>
+                    <input type="hidden" id="@($"quantity-{inventory.InventoryId}")" name="Quantities[@inventory.InventoryId]" value="1" />
+                }
+            </div>
+        }
+    }
+    <hr />
+    @Html.ActionLink("←Назад", "Details", "Transportation", new{ id = Model.TransportationId }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('.inventory-checkbox').change(function () {
+            var inventoryId = $(this).attr('id').split('-')[1];
+            if ($(this).is(':checked')) {
+                $('#quantity-' + inventoryId).prop('disabled', false);
+            } else {
+                $('#quantity-' + inventoryId).prop('disabled', true).val(0);
+            }
+        });
+    });
+</script>

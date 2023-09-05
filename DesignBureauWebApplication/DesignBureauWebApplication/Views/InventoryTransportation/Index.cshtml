@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DesignBureauWebApplication.Models.InventoryTransportation>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1 style="margin-top: 10%">Список инвентаря по заказам</h1>
+<hr />
+<div class="container">
+    @foreach (var group in Model.GroupBy(io => io.TransportationId))
+    {
+        <div class="jumbotron">
+            <h3 style="margin-top: 5%"> @group.First().Transportation.PlanDepartureDateTime - @group.First().Transportation.PlanArrivalDateTime </h3>
+            <h3> @group.First().Transportation.Origin.City, @group.First().Transportation.Origin.Street, @group.First().Transportation.Origin.HouseNumber
+                - @group.First().Transportation.Destination.City, @group.First().Transportation.Destination.Street, @group.First().Transportation.Destination.HouseNumber
+            </h3>
+            <p>
+                @Html.ActionLink("✚", "Create", new{ id=group.First().Transportation.TransportationId }, new { @class="btn btn-primary" })
+            </p>
+            <div class="row">
+                <table class="table table-hover table-responsive">
+                    <tr>
+                        <th>
+                            Инвентарь
+                        </th>
+                        <th>
+                            Статус
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Inventory.InventoryId)
+                            </td>
+                            <td>
+@*                                @Html.DisplayFor(modelItem => item.TransportationStatus)
+*@                            </td>
+                            <td>
+                                @Html.ActionLink("✏️", "Edit", new { id=item.TransportationId }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("🔍", "Details", new { id=item.TransportationId }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("🗑️", "Delete", new { id=item.TransportationId }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    }
+</div>

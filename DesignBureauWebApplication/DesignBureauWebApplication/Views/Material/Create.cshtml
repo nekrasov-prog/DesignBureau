@@ -1,0 +1,25 @@
+﻿@using DesignBureauWebApplication.ViewModels;
+@model MaterialViewModel
+
+<h2>Новый материал</h2>
+<hr />
+
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="MaterialDictionaryId">Оборудование</label>
+        <select asp-for="MaterialDictionaryId" asp-items="@Model.MaterialDictionaryList" class="form-control"></select>
+        <span asp-validation-for="MaterialDictionaryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LocationId">Местоположение</label>
+        <select asp-for="LocationId" asp-items="@Model.LocationList" class="form-control"></select>
+        <span asp-validation-for="LocationId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity">Количество</label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    @Html.ActionLink("←Назад", "Index", new{ }, new { @class = "btn btn-secondary" })
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>

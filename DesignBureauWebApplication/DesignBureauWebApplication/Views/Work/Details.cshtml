@@ -1,0 +1,188 @@
+﻿@using DesignBureauWebApplication.Data.Enum;
+@using DesignBureauWebApplication.ViewModels;
+@model DetailsWorkViewModel
+
+<style>
+    .btn.btn-light {
+        border-color: lightgray;
+    }
+
+    .work-row:hover {
+        cursor: pointer;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="display :flex; flex-direction :row;justify-content :space-between;">
+                @Html.ActionLink("←", "Details", "Project", new { id = Model.ProjectId }, new { @class = "btn btn-light" })
+                <div>
+                    @if (Model.LastWorkStatus != null && Model.LastWorkStatus == WorkStatus.Preparation)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="start">
+                            ⏳
+                        </button>
+                    }
+                    else if (Model.LastWorkStatus == WorkStatus.InProgress)
+                    {
+                        <button type="button" class="btn btn-success rounded-2" data-toggle="modal" data-target="#myModal" data-action="finish">
+                            🏁
+                        </button>
+                    }
+                    @if (Model.LastWorkStatus != WorkStatus.Completed || Model.LastWorkStatus != WorkStatus.Cancelled)
+                    {
+                        @Html.ActionLink("✏️", "Edit", new { id=@Model.WorkId }, new { @class = "btn btn-primary rounded-2" })
+                    }
+                    <button type="button" class="btn btn-danger rounded-2" data-toggle="modal" data-target="#myModal" data-action="cancel">🗑️</button>
+                </div>
+            </div>
+
+            <nav aria-label="breadcrumb" style="margin-top: 5%;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Project", new { })">Проекты</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Details", "Project", new { id = Model.ProjectId })">@Model.Project.ProjectTitle</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.WorkDictionary.WorkTitle</li>
+                </ol>
+            </nav>
+
+            <h2 style ="margin-top: 5%">
+                @Model.WorkDictionary.WorkTitle</h2>
+            <p text-muted>@Html.DisplayFor(model => model.LastWorkStatus)</p>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Сроки работы</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-5">Начало:</dt>
+                        <dd class="col-sm-7">@Model.PlanStartDate.ToShortDateString()</dd>
+
+                        <dt class="col-sm-5">Окончание:</dt>
+                        <dd class="col-sm-7">@Model.PlanOverDate.ToShortDateString()</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Прогресс работы</h4>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: @Model.Progress%">
+                            @Model.Progress%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2>Задачи</h2>
+            @if (Model.LastWorkStatus != WorkStatus.Cancelled && Model.LastWorkStatus != WorkStatus.Completed)
+            {
+                <p>
+                    @Html.ActionLink("✚", "Create", "Assignment", new { workId = Model.WorkId }, new { @class = "btn btn-primary" })
+                </p>
+            }
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Задача</th>
+                        <th>Начало</th>
+                        <th>Окончание</th>
+                        @if (Model.LastWorkStatus != WorkStatus.Cancelled && Model.LastWorkStatus != WorkStatus.Completed)
+                        {
+                            <th></th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var assignment in Model.Assignments)
+                    {
+                        <tr>
+                            <td class="work-row">
+                                <a href="@Url.Action("Details", "Assignment", new { id = assignment.AssignmentId })" style="color: #191919; font-weight:600;">
+                                    @assignment.AssignmentDictionary.AssignmentTitle &#128279;
+                                </a>
+                            </td>
+                            <td>@assignment.StartDate.ToShortDateString()</td>
+                            <td>@assignment.EndDate.ToShortDateString()</td>
+                            @if (Model.LastWorkStatus != WorkStatus.Cancelled && Model.LastWorkStatus != WorkStatus.Completed)
+                            {
+                                <td>
+                                    @Html.ActionLink("✏️", "Edit", "Assignment", new { id=assignment.AssignmentId }, new { @class = "btn btn-primary btn-sm rounded-2" })
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <a href="#" class="btn btn-primary">Да</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section SideContent {
+    <p>История:</p>
+    <hr />
+    <ul style="list-style-type: none;">
+        @foreach (var wh in Model.WorkHistories.OrderByDescending(h => h.CreatedAt))
+        {
+            <li>@wh.CreatedAt.ToShortDateString(): @Html.DisplayFor(m => wh.WorkStatus) <hr /> </li>
+        }
+    </ul>
+ }
+
+<script>
+    $(function () {
+        $('#myModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Кнопка, вызвавшая окно
+            var action = button.data('action'); // Извлечение информации
+
+            var modal = $(this);
+            if (action == 'start') {
+                modal.find('.modal-title').text('Начало работы');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите начать работу?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.WorkId })');
+            } else if (action == 'finish') {
+                modal.find('.modal-title').text('Окончание работы');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите завершить работу?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("ChangeStatus", new { id = Model.WorkId })');
+            } else if (action == 'cancel') {
+                modal.find('.modal-title').text('Отмена работы');
+                modal.find('.modal-body').html('<p>Вы уверены, что хотите отменить работу?</p>');
+                modal.find('.modal-footer a').attr('href', '@Url.Action("Cancel", new { id = Model.WorkId })');
+            }
+        });
+    });
+</script>

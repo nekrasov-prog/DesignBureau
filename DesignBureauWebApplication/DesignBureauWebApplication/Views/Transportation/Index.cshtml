@@ -1,0 +1,110 @@
+﻿@using DesignBureauWebApplication.Data.Enum;
+@model IEnumerable<DesignBureauWebApplication.ViewModels.DetailsTransportationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Перевозки</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("✚", "Create", new{}, new { @class="btn btn-primary" })
+</p>
+
+<table class="table table-hover table-responsive-sm">
+    <thead>
+        <tr>
+            <th>
+                Откуда - Куда
+            </th>
+            <th>
+                Когда
+            </th>
+            <th>
+                Статус
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Origin != null)
+                    {
+                        <text>@Html.DisplayFor(modelItem => item.Origin.LocationType)</text>
+
+                        <text>: </text>
+                        <text>@Html.DisplayFor(modelItem => item.Origin.City)</text>
+
+                        <text>, </text>
+                        <text>@Html.DisplayFor(modelItem => item.Origin.Street)</text>
+
+                        <text>, </text>
+                        <text>@Html.DisplayFor(modelItem => item.Origin.HouseNumber)</text>
+                    }
+                    else
+                    {
+                        <text>
+                            @item.Order.Supplier.SName
+                        </text>
+                        <text>: </text>
+                        <text>
+                            <a href="@Url.Action("Details", "Order", new { id = item.Order.OrderId })" style="color: #191919; font-weight:600;">
+                                @item.Order.ContractNumber&#128279;
+                            </a>
+                        </text>
+                    }                    <br /> | <br />
+                    @Html.DisplayFor(modelItem => item.Destination.LocationType): @Html.DisplayFor(modelItem => item.Destination.City), @Html.DisplayFor(modelItem => item.Destination.Street), @Html.DisplayFor(modelItem => item.Destination.HouseNumber)
+                </td>
+                <td>
+                    @if (item.PlanDepartureDateTime != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.PlanDepartureDateTime) <br />
+                    }
+                    else
+                    {
+                        <br />
+                    }
+                    <br />
+                    @Html.DisplayFor(modelItem => item.PlanArrivalDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastTransportationStatus)
+                </td>
+                <td>
+                    @Html.ActionLink("✏️", "Edit", new { id=item.TransportationId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("🔍", "Details", new { id=item.TransportationId }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("🗑️", "Delete", new { id=item.TransportationId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section SideContent {
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" id="search-input" class="form-control" placeholder="Поиск...">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="search-btn"><i class="fas fa-search"></i>🔍</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5%">
+        <div class="col-md-12">
+            <div class="form-group">
+                <select class="form-control" id="filter-select">
+                    <option value="all">Все</option>
+                    <option value="transfers">Перевозки</option>
+                    <option value="deliveries">Доставки</option>
+                </select>
+            </div>
+        </div>
+    </div>
+}

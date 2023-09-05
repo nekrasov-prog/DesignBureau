@@ -1,0 +1,67 @@
+﻿@using DesignBureauWebApplication.Data.Enum;
+@model IEnumerable<DesignBureauWebApplication.ViewModels.DetailsMaterialViewModel>
+
+<h2>Материалы</h2>
+
+<div class="mb-3 row">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="Поиск">
+    </div>
+    <div class="col-sm-4">
+        <select class="form-control" id="type-filter" name="typeFilter">
+            <option value="">Все типы</option>
+            @foreach (var type in Enum.GetValues(typeof(MaterialType)))
+            {
+                <option value="@((int)type)">@((MaterialType)type)</option>
+                @*                <option value="@status">@((MaterialStatus)status)</option>
+            *@            }
+        </select>
+    </div>
+    <div class="col-sm-4">
+        <button type="submit" class="btn btn-secondary" id="apply-filter">Применить</button>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("✚", "Create", new{}, new { @class="btn btn-primary" })
+</p>
+<table class="table table-hover table-responsive-sm">
+    <thead>
+        <tr>
+            <th scope="col">Материал</th>
+            <th scope="col">Тип</th>
+            <th scope="col">Местоположение</th>
+            <th scope="col">Количество</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var material in Model)
+        {
+            <tr>
+                <th class="col-2" scope="row">@material.MaterialDictionary.MaterialName</th>
+                <td class="col-2">@Html.DisplayFor(modelItem => material.MaterialDictionary.MaterialType)</td>
+@*                <td class="col-3">@(material.Inventory?.Location != null ? $"{material.Inventory.Location.City}, {material.Inventory.Location.Street}, {material.Inventory.Location.HouseNumber}" : "")</td>
+*@                <td class="col-3">
+                    @if (material.Inventory?.Location == null)
+                    {
+                        <a href="@Url.Action("Details", "Order", new { id = material.OrderId })" style="color: #191919; font-weight:600;">
+                            @material.WhereIs
+                        </a>
+                    }
+                    else
+                    {
+                        <span>@($"{material.Inventory.Location.City}, {material.Inventory.Location.Street}, {material.Inventory.Location.HouseNumber}")</span>
+                    }
+                </td>
+                <td class="col-2">@material.Quantity</td>
+                <td class="col-3">
+                    <a href="@Url.Action("Edit", "Material", new { id = material.MaterialId })" class="btn btn-sm btn-primary">✏️</a>
+                    <a href="@Url.Action("Details", "Material", new { id = material.MaterialId })" class="btn btn-sm btn-success">🔍</a>
+                    <a href="@Url.Action("Delete", "Material", new { id = material.MaterialId })" class="btn btn-sm btn-danger" onclick="return confirm('Вы действительно хотите удалить этот материал?')">🗑️</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
